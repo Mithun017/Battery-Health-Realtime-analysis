@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Battery Health Forecaster</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Battery Health Predictor</h1>
+            <p>IoT-Driven Failure Forecasting System</p>
+        </header>
+
+        <main>
+            <div class="card live-section">
+                <h2>Live IoT Monitor <span class="live-indicator">● Live</span></h2>
+                <div class="live-data-grid">
+                    <div class="data-item">
+                        <span class="label">Voltage</span>
+                        <span class="value" id="liveVoltage">--</span> <span class="unit">V</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="label">Current</span>
+                        <span class="value" id="liveCurrent">--</span> <span class="unit">A</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="label">Temp</span>
+                        <span class="value" id="liveTemp">--</span> <span class="unit">°C</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="label">Cycle</span>
+                        <span class="value" id="liveCycle">--</span>
+                    </div>
+                </div>
+                <div class="live-prediction">
+                    <h3>Real-time Health</h3>
+                    <div class="soh-display small">
+                        <span id="liveSoH">--</span><span class="unit">%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card input-section">
+                <h2>Sensor Data Input</h2>
+                <form id="predictionForm">
+                    <div class="input-group">
+                        <label for="voltage">Voltage (V)</label>
+                        <input type="number" id="voltage" step="0.001" placeholder="e.g. 4.19" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="current">Current (A)</label>
+                        <input type="number" id="current" step="0.001" placeholder="e.g. -0.99" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="temperature">Temperature (°C)</label>
+                        <input type="number" id="temperature" step="0.1" placeholder="e.g. 24.5" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cycle">Cycle Count</label>
+                        <input type="number" id="cycle" step="1" placeholder="e.g. 50" required>
+                    </div>
+                    <button type="submit" id="predictBtn">Predict Health</button>
+                </form>
+            </div>
+
+            <div class="card result-section">
+                <h2>Health Status</h2>
+                <div id="resultContainer" class="hidden">
+                    <div class="soh-display">
+                        <span id="sohValue">--</span><span class="unit">%</span>
+                    </div>
+                    <p id="healthMessage">Enter data to see prediction</p>
+                    <div class="progress-bar-bg">
+                        <div id="progressBar" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing battery data...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
