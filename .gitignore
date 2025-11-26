@@ -5,3 +5,4 @@ venv/
 env/
 .vscode/
 data/
+model/battery_model.pkl
